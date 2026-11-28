@@ -68,6 +68,12 @@ details summary{cursor:pointer;list-style:none}details summary::-webkit-details-
 .av{border-radius:50%;object-fit:cover;object-position:50% 18%;background:#2a1747;flex:none;border:2px solid var(--or)}
 .toast{max-width:88vw;text-align:center;border-radius:18px}input[type=text],#vi1,#vi2{font:inherit;padding:10px;border-radius:12px;border:1px solid #fff3;background:#fff1;color:var(--tx);min-width:0;width:100%}.sy{transition:background .1s}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.seg{display:flex;gap:8px;justify-content:center;margin-top:8px}.seg .pill{flex:1;max-width:160px;padding:8px 12px;font-size:14px}
+.em{font-size:56px;line-height:1.1}.ins{color:var(--tx);font:600 15px 'Plus Jakarta Sans';opacity:.92;line-height:1.35}
+.btn.rec{background:linear-gradient(180deg,#ff7b7b,#d94a4a);color:#fff;box-shadow:0 6px 0 #8f2323,0 12px 24px rgba(217,74,74,.4);animation:recp 1s ease-in-out infinite}
+@keyframes recp{50%{filter:brightness(1.18)}}
+.abtn{min-height:58px}.card.f #fr{pointer-events:none}.card:not(.f) #bk{pointer-events:none}
+@media(max-height:640px){#sp.ov{padding-top:calc(8px + env(safe-area-inset-top));padding-bottom:calc(8px + env(safe-area-inset-bottom))}.scene{margin:6px 0}.card{min-height:236px}.face{padding:10px 14px;gap:8px}.em{font-size:38px}#fr h1{font-size:23px!important}.ins{font-size:13px}.abtn{min-height:52px;padding:12px}#sp .btn.g{padding:9px 14px}#sp .pill{padding:9px 14px}.seg{margin-top:4px}}
 button:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
 </style></head><body>
 <div id="flag" aria-hidden="true"></div>
@@ -78,10 +84,10 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-
  <div class="row sp"><button class="btn g" id="spx" style="padding:10px 16px">✕</button><div class="mut" id="hud"></div><div class="mut" id="tt"></div></div>
  <div class="bar" style="margin-top:10px"><i id="tb"></i></div>
  <div class="mut" id="cal" style="margin-top:8px;text-align:center"></div>
+ <div class="seg" id="am" role="group"><button class="pill sel" id="amw" type="button" aria-pressed="true"></button><button class="pill" id="amm" type="button" aria-pressed="false"></button></div>
  <div class="scene"><div class="card" id="cd">
   <div class="face glass" id="fr"></div><div class="face glass back" id="bk"></div></div></div>
  <div class="row" style="gap:10px"><button class="btn g" style="flex:1" id="hb">💡 Подсказка (Ассоциация)</button><button class="btn g" id="vb">🗣️</button></div>
- <div class="row sp" style="margin-top:12px"><span class="mut" id="ml"></span><button class="pill" id="mic">Авто</button></div>
 </div>
 
 <div class="sheet" id="sh"><div class="sl" id="sl"></div><div class="dots" id="dt"></div><div style="padding:0 24px"><button class="btn big" id="shx">Понятно</button></div></div>
