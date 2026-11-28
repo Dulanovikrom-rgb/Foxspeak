@@ -5,7 +5,7 @@ function trOpen(k){trk=k;ti=0;tsc=0;$('#tr').classList.add('on');$('#trt').textC
 function trClose(){trTok++;clearInterval(tm_);try{speechSynthesis.cancel();rec&&rec.stop()}catch(e){}$('#tr').classList.remove('on');render()}
 function trStep(){trTok++;clearInterval(tm_);$('#trs').textContent='⭐ '+tsc;[dub,rhy,sha,trl][trk]()}
 function tick(a){AC();ac.resume&&ac.resume();const T=ac.currentTime,o=ac.createOscillator(),g=ac.createGain();o.frequency.value=a?1200:800;g.gain.setValueAtTime(.2*S.vol,T);g.gain.exponentialRampToValueAtTime(.001,T+.06);o.connect(g);g.connect(ac.destination);o.start(T);o.stop(T+.07)}
-function dub(){const D2=[[3,1],[5,4],[9,7],[6,2]],p=D2[ti%4];
+function dub(){const n2=Math.max(1,P.length>>1),k=2*(ti%n2),p=[k,Math.min(k+1,P.length-1)]; /* пары строятся из PHRASES на лету: соседние фразы одной темы, весь список по кругу */
  $('#trb').innerHTML=`<div class="glass" style="padding:16px"><div class="mut">🎬 A</div><h2 style="margin:6px 0">${P[p[0]][0]}</h2><div class="mut">${tr(p[0])}</div><button class="btn g" id="d1" style="margin-top:8px">▶</button></div><div class="glass" style="padding:16px"><div class="mut">🎭 B — 🎤</div><h2 style="margin:6px 0">${P[p[1]][0]}</h2><div class="mut">${tr(p[1])}</div><button class="btn g" id="d2" style="margin-top:8px">🔊</button></div><button class="btn big" id="dn">✔</button>`;
  $('#d1').onclick=()=>say(P[p[0]][0],'en-GB');$('#d2').onclick=()=>say(P[p[1]][0],'en-US');$('#dn').onclick=()=>{tsc++;ti++;trStep()};setTimeout(()=>say(P[p[0]][0],'en-GB'),300)}
 const syl=w=>w.match(/[^aeiouy]*[aeiouy]+(?:[^aeiouy]+$)?|[^aeiouy]+$/gi)||[w];
@@ -79,7 +79,7 @@ const FoxAns=(()=>{
   $('#fr').innerHTML=`<h1 style="font-size:26px">${tr(cur)}</h1><button class="btn g" id="al" type="button">${t('alis')}</button><button class="btn g" id="ar" type="button">${t('aref')}</button><div class="row" style="gap:10px"><button class="btn g" id="an" type="button" style="flex:1">${t('aretry')}</button><button class="btn" id="ay" type="button" style="flex:1">${t('aok')}</button></div>`;
   $('#al').onclick=e=>{e.stopPropagation();try{au&&au.pause();au=new Audio(url);au.play().catch(()=>{})}catch(x){}};
   $('#ar').onclick=e=>{e.stopPropagation();$('#ar').textContent='🔊 '+P[cur][0];say(P[cur][0])};
-  $('#an').onclick=e=>{e.stopPropagation();if(!sm){sm=1;FoxSR.bad(cur);run=0;S.tele.push({t:Date.now(),i:cur,type:'self'});S.tele=S.tele.slice(-200);save()}sfx(SND.no);cls();say(P[cur][0]);render()};
+  $('#an').onclick=e=>{e.stopPropagation();if(!sm){sm=1;fres='err';FoxSR.bad(cur);run=0;S.tele.push({t:Date.now(),i:cur,type:'self'});S.tele=S.tele.slice(-200);save()}sfx(SND.no);cls();say(P[cur][0]);render()};
   $('#ay').onclick=e=>{e.stopPropagation();if(busy)return;sfx(SND.ok);cls();win()}}
  function setMode(m){if(M()===m)return;S.amode=m;save();seg();if(!busy&&cur>=0){cls();$('#cd').classList.remove('f');render()}}
  return{render,seg,reset(){cls();sm=0},init(){$('#amw').onclick=()=>setMode('w');$('#amm').onclick=()=>setMode('m');seg()}}})();
